@@ -1,0 +1,93 @@
+Prise de note premier passage
+
+Problème de k-coloration de graphe:
+
+1 Stratégie complete :
+Solveur OrTools
+Elle explique pourquoi elle utilise en mode ez
+Paramètre par défaut 
+
+Or tools parametre par défault en premier lieu
+Modèle guidé par le Dégré en 2nd lieu. (Heuristique de degré)
+
+
+Solveur MIP pour le second solveur utilisé
+
+Explique la différence 
+
+Méthode Heuristique: Chaque méthode est expliqué 
+
+Greedy 
+Greedy - RR
+DSATUR
+Min Conflict 
+
+Objectif du Benchmark: Explication à quoi il sert et les quelles sont utilisé
+Dans leur cas généré par eux même
+Et pris des benchmarks déjà existant
+
+Synthèse des Performances sur un tableau
+
+Bilan des méthodes
+
+Puis Perspective ce qu’elle aurait pu faire Gécode 
+Contraindre de symétrie
+Réflexion du prof
+Chercher les paramètres par défault de ORTOOLS
+Pourquoi Mip marche pas parce que elle a 6 réussite sur 9 par rapport aux autres qui ont 9 sur 9
+Comment ils ont fixé le nombre de couleurs
+Il veut sa transition de phase ou tu montres que le solveur il bug
+Chercher à montrer dans toute les instances pour voir ce que ca donne (vocal vers 20 min pour voir ce qu’il a dit)
+Heuristique faut le lancer plusieurs fois pour bénéficier de l’aléatoire
+
+Probleme du sac
+
+Rappel de la modélisation du problème: 
+Choix du solver: 
+Choco et OrTools:
+
+Choix du benchmark et explication 
+
+
+
+Méthode complete:
+DomOverWDeg
+RatioFirst
+
+Choix de la description
+Selection
+Limite
+Avantage 
+
+Incompléte:
+Glouton aléatoire
+LargeNeighborhood Search
+
+Choix de la description
+Selection
+Limite
+Avantage 
+
+Méthode de Résolution Linéaire
+Mixed Integer Linear Program
+
+Choix de la description
+Selection
+Limite
+Avantage 
+
+Résultats
+
+Avec graphe montrant instance et seconde ou branche cherche
+
+Conclusion
+
+Réflexion du professeur
+
+Nombre de variable qui explose ou pas pour les méthodes Linéaire ? Très rarement
+Choco nap sak ? Vous avez besoin de lui précisez une stratégie ou NapSak choisi ? NapSak pour définir les variables mais pas pour résoudre
+Instance fortement corrélé c’est difficile ou Facile ? Les instances faiblement corrélé sont plus facile
+Quelle pourcentage de variable vous avez fixé? 15 pour-cent défixé
+
+Preuve d’optimalité à explorer ???
+CP-SAT
