@@ -1,0 +1,69 @@
+# Projet JSSP : Comparaison de Méthodes de Résolution
+
+Ce projet propose différentes approches algorithmiques pour résoudre le problème d'ordonnancement d'atelier (Job Shop Scheduling Problem). Il compare des méthodes allant de la programmation linéaire en nombres entiers (MILP) à la programmation par contraintes (CP-SAT) avec des stratégies de recherche personnalisées, ainsi que des méta-heuristiques de recherche locale.
+
+## Structure du Projet
+
+Le projet est organisé comme suit :
+
+* Complete/ : Contient les scripts de résolution finalisés et configurés.
+    * CycleCut/ : Approche par Cycle-Cutset utilisant CP-SAT avec une stratégie de branchement sur les variables de précédence.
+    * DWDeg/ : Implémentation d'une heuristique de recherche personnalisée inspirée de DomOverWDeg.
+    * MILP/ : Formulation en programmation linéaire mixte utilisant le solveur SCIP avec une formulation Big-M.
+    * LNS/ : Implémentation de la recherche à voisinage large (Large Neighborhood Search).
+    * config.py : Fichier de configuration centralisant les chemins d'accès aux données.
+
+* Incomplete/ : Travaux en cours et expérimentations.
+    * algos.ipynb : Notebook regroupant des algorithmes de recherche heuristique et de méta-heuristiques :
+        - Greedy Local Search : Algorithme de construction rapide qui génère une solution initiale, puis l'améliore par l'exploration itérative de voisinages (échanges de tâches sur une machine) pour réduire le Makespan.
+        - Random Walk : Stratégie d'exploration utilisant des déplacements aléatoires dans l'espace des solutions afin de diversifier la recherche et découvrir de nouvelles zones prometteuses.
+        - Simulated Annealing : Algorithme d'optimisation stochastique capable d'accepter temporairement des solutions de moins bonne qualité pour s'échapper des optimums locaux et converger vers un optimum global.
+
+* data/ : Gestion des données d'entrée.
+    * instances_jsp/ : Dossier contenant les fichiers d'instances au format standard (ex: ft06, la01).
+    * instance_download.py : Script utilitaire pour télécharger les instances de référence depuis JSPLIB.
+
+* plot/ : Répertoire généré automatiquement contenant les diagrammes de Gantt et les analyses statistiques de performance.
+
+## Installation
+
+Le projet nécessite Python et les bibliothèques suivantes :
+* ortools
+* matplotlib
+* pandas
+* numpy
+
+Commandes d'installation :
+pip install ortools matplotlib pandas numpy
+
+## Utilisation
+
+### 1. Préparation des données
+Si le dossier instances_jsp est vide, téléchargez les instances de test en exécutant le script dédié :
+python data/instance_download.py
+
+### 2. Exécution des solveurs
+Chaque script de résolution peut être lancé individuellement. Par exemple, pour l'approche MILP :
+cd Complete/MILP
+python MILP.py
+
+Les résultats (fichiers CSV et graphiques) seront automatiquement sauvegardés dans le dossier plot/ correspondant à la méthode.
+
+## Méthodes Implémentées
+
+### Programmation Linéaire (MILP)
+Utilise le solveur SCIP via OR-Tools. La formulation repose sur des variables binaires de précédence et une constante Big-M pour gérer les contraintes disjonctives sur les machines.
+
+### Cycle-Cutset (CP-SAT)
+Cette méthode utilise le solveur CP-SAT en imposant une stratégie de recherche sur les variables booléennes de précédence, visant à résoudre les conflits sur les machines de manière prioritaire.
+
+### Heuristique de Recherche (DWDeg-like)
+Applique une stratégie de branchement personnalisée qui sélectionne les variables selon leur criticité (basée sur la position dans le job et la durée) et utilise le principe du CHOOSE_MIN_DOMAIN_SIZE.
+
+## Visualisation
+Le projet génère automatiquement deux types de graphiques :
+1. Diagrammes de Gantt : Visualisation de l'occupation des machines dans le temps.
+2. Statistiques de performance : Comparaison du Makespan par rapport au temps de calcul et analyse de la complexité.
+
+## Configuration
+Le chemin des instances est défini dans le fichier Complete/config.py. Pour modifier les instances testées ou la limite de temps, éditez la section CONFIGURATION au début de chaque script de résolution.
