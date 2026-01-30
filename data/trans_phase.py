@@ -151,5 +151,5 @@ def analyze_probabilistic_separate(folder_path, repetitions=5):
 # Lancer l'analyse
 # -------------------------
 if __name__ == "__main__":
-    folder_path = "instances_jsp"
+    folder_path = "../data/instances_jsp"
     analyze_probabilistic_separate(folder_path, repetitions=5)
